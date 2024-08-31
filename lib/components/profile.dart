@@ -10,9 +10,19 @@ class MyProfile extends StatefulWidget {
 class _MyProfileState extends State<MyProfile> {
   @override
   Widget build(BuildContext context) {
-    return const  Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text("Profile"),
+        child: Column(
+          children: [
+            SizedBox(height: 300,),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset("assets/images/logo.png"),
+            ),
+            Text("Our One-Stop Shop for Everything You Love.")
+          ],
+        ),
       ),
     );
   }

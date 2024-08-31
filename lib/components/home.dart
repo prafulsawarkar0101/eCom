@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import "../modules/image_module1.dart";
 import "../modules/json_lodar.dart";
-import '../components/productCard.dart';
+import '../modules/cart.dart';
 
 class ImageSliderScreen extends StatefulWidget {
   @override
@@ -27,15 +27,15 @@ class _ImageSliderScreenState extends State<ImageSliderScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
                 child:
-                    CircularProgressIndicator()); // Show loading indicator while waiting
+                    CircularProgressIndicator()); 
           } else if (snapshot.hasError) {
             return Center(
                 child: Text(
-                    'Error: ${snapshot.error}')); // Display error message if any
+                    'Error: ${snapshot.error}')); 
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Center(
                 child: Text(
-                    'No images found')); // Show message if no images are found
+                    'No images found')); 
           } else {
             return SingleChildScrollView(
               child: Column(children: [
@@ -58,7 +58,6 @@ class _ImageSliderScreenState extends State<ImageSliderScreen> {
                         children: [
                           Image.network(
                             imageModule.url,
-                   
                           ),
                           Padding(
                             padding: const EdgeInsets.all(4),
@@ -136,25 +135,21 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 8.0,vertical: 8
-                ),
-                child:ElevatedButton(onPressed: (){
+                  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
+                  child: ElevatedButton(
+                    onPressed: () {
 
-                },
-                child: Text("Add to Bag",
-                style: TextStyle(
-                  color: Colors. black
-                ),),
-                style:  ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll<Color>(Colors.grey.shade200),
-                ),
-
-              
-
-
-                
-                )
-              ),
+                      saveId(imageModule.id);
+                    },
+                    child: Text(
+                      "Add to Bag",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll<Color>(Colors.grey.shade200),
+                    ),
+                  )),
             ],
           ),
           Image.network(

@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'components/profile.dart';
 import 'components/home.dart';
 import 'components/profile.dart';
+import 'components/cartPage.dart';
+import 'components/catelog.dart';
 
 void main() {
   runApp(const MyApp());
@@ -63,7 +65,17 @@ class _MyHomePageState extends State<MyHomePage> {
         height: 25,),
         actions: [
           IconButton(
-            icon: const Icon(Icons.account_circle,
+            icon: const Icon(Icons.shopping_cart_outlined,
+                size: 28),
+            onPressed: () {
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context)=>  const CartPage())
+              );
+            },
+            
+          ),
+          IconButton(
+            icon: const Icon(Icons.store,
                 size: 28),
             onPressed: () {
               Navigator.push(context, 
